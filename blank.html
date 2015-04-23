@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Seminar</title>
+
+    <!-- 
+      Notes on CSS media types used:
+
+      1) projection -> slideshow mode (display one slide at-a-time; hide all others)
+      2) screen     -> outline mode (display all slides-at-once on screen) 
+      3) print      -> print (and print preview)
+
+      Note: toggle between projection/screen (that is, slideshow/outline) mode using t-key
+
+      Questions, comments?
+      - send them along to the mailinglist/forum online @ http://groups.google.com/group/webslideshow    
+    -->
+
+    <!-- style sheet links -->
+    <link rel="stylesheet/less" href="themes/blank/projection.css.less"  media="screen,projection">
+    <link rel="stylesheet/less" href="themes/blank/screen.css.less"      media="screen">
+    <link rel="stylesheet/less" href="themes/blank/print.css.less"       media="print">
+
+    <link rel="stylesheet/less" href="blank.css.less"    media="screen,projection">
+
+    <!-- Notes about less css support
+      - all less stylesheets (*.css.less) need to get listed/loaded first (before the less.js script)
+      - find more info about less.js online @ http://lesscss.org
+
+      ***** NOTE:
+      less.js browser script currently won’t work if you’re using Google Chrome
+      and the path to your page starts with "file:///" due to a known Chrome issue.
+      (In the developer/js console you will see:
+      XMLHttpRequest cannot load file:///../s6/shared/projection.css.less.
+      Cross origin requests are only supported for HTTP.)
+    -->
+
+    <!-- add js libs (less, jquery) -->
+    <script src="js/less-1.1.4.min.js"></script>
+    <script src="js/jquery-1.7.min.js"></script>
+
+    <!-- S6 JS -->
+    <script src="js/jquery.slideshow.js"></script>
+    <script src="js/jquery.slideshow.counter.js"></script>
+    <script src="js/jquery.slideshow.controls.js"></script>
+    <script src="js/jquery.slideshow.footer.js"></script>
+    <script src="js/jquery.slideshow.autoplay.js"></script>
+    <script>
+$(document).ready( function() {
+  Slideshow.init();
+
+  // Example 2: Start Off in Outline Mode
+  // Slideshow.init( { mode: 'outline' } );
+
+  // Example 3: Use Custom Transition
+  // Slideshow.transition = transitionScrollUp;
+  // Slideshow.init();
+
+  // Example 4: Start Off in Autoplay Mode with Custom Transition
+  // Slideshow.transition = transitionScrollUp;
+  // Slideshow.init( { mode: 'autoplay' } );
+} );
+    </script>
+
+    <!-- Better Browser Banner for Microsoft Internet Explorer (IE) -->
+    <!--[if IE]>
+      <script src="js/jquery.microsoft.js"></script>
+      <![endif]-->
+
+  </head>
+  <body>
+
+    <div class="layout">
+      <div id="header"></div>
+      <div id="footer"></div>
+    </div>
+
+    <div class="presentation">
+
+      <!-- add slides here; example -->
+
+      <div class='slide cover'>
+        <table width="90%" height="90%" border="0" align="center">
+          <tr>
+            <td><div align="center">
+                <h1><font color="#808db5">ハイパフォーマンスブラウザネットワーキング</font></h1>
+                <h1><font color="#808db5">〜5, 6章〜</font></h1>
+              </div></td>
+          </tr>
+          <tr>
+            <td><div align="left">
+                Miwa Oshiro
+                <script>
+var date = new Date();
+var year = date.getFullYear();
+var month = date.getMonth();
+var day = date.getDate();
+
+var monthList = new Array("January","February","March","April","May","June",
+    "July","August","September","October","November","December");
+
+document.write(monthList[month]+" "+day+", "+year);
+
+                </script>
+                <hr style="color:#ffcc00;background-color:#ffcc00;text-align:left;border:none;width:300%;height:0.2em;">
+              </div></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class='slide'>
+        <h2>5章</h2>
+        <p>
+        どこにいてもインターネットとつながることのできる現在、
+        <br>
+        ワイヤレスネットワークは多様化している。
+        </p>
+        <p>
+        この章では、
+        </p>
+        <p>
+        <b>
+            <ul>
+                <li>
+                    ワイヤレスネットワークのパフォーマンスの基礎
+                </li>
+            </ul>
+        </b>
+        </p>
+        <p>
+        説明されている。
+        </p>
+      </div>
+
+      <div class='slide'>
+        <h2>ワイヤレス通信における最大のチャネル容量</h2>
+        <p>
+        ワイヤレス通信方式には、最大のチャネル容量が存在する。
+        <br>
+        <br>
+        チャネル容量とは、
+        <br>
+        受信 →  送信とデータを送信する際に通る伝送路を介して
+        <br>
+        確実に伝送できる情報の量のこと
+        <br>
+        <br>
+        このチャネル容量は、<b>基本的な原則原理</b>によって決定する。
+        </p>
+      </div>
+
+      <div class='slide'>
+        <h2>最大のチャネル容量の計算方法</h2>
+        <p>
+        最大のチャネル容量の計算方法がある。
+        <br>
+        <br>
+        <p><img src="images/mixi/teiri.jpg" width="250" height="100">
+        <br>
+        <br>
+        シャノン・ハートレーの定理である
+        <br>
+        <ul>
+        <li>
+            BW : 周波数帯域幅(Hz)
+        </li>
+        <li>
+            S/N : シグナル/ノイズ(ワット)
+        </li>
+        </ul>
+        </p>
+      </div>
+
+      <div class='slide'>
+        <h2>チャネル容量に影響する2要素</h2>
+        <p>チャネル容量に影響する2つの要素が以下である。</p>
+        <ul>
+          <li>
+              利用可能な帯域幅の大きさ
+          </li>
+          <li>
+              受信・送信間の信号強度
+          </li>
+        </ul>
+        <p>
+        である。
+        </p>
+        <p>
+        ワイヤレスネットワークには様々な種類があるけれど、
+        <br>
+        基礎的な制約事項は共通している。
+        </p>
+      </div>
+
+      <div class='slide'>
+          <h2>帯域幅とは</h2>
+          <ul>
+              <li>無線通信は電波・電磁波といった共有媒体を使用している</li>
+              <br>
+              <li>ワイヤレスネットワークの規格により、使用できる帯域は定義されている</li>
+              <ul>
+              <li>例 : 802.11b, 802.11gは、2.4-2.5GHzの周波数帯を使用する</li>
+              </ul>
+              <br>
+              <li>周波数帯の割り当ては、国や地域の政府が取り決めている
+              </li>
+              <ul>
+                  <li>国や地域によって、動作しなくなったりする</li>
+              </ul>
+              <br>
+              <li>定理から、他の条件が同等である場合、チャネル容量は周波数帯域に比例することがわかる</li>
+          </ul>
+      </div>
+
+
+      <div class='slide'>
+          <h2>周波数帯域によるパフォーマンス</h2>
+          <p>使用する周波数帯域によってパフォーマンスが変わる</p>
+          <ul>
+              <li>低周波数</li>
+              <ul>
+                  <li>遠くに伝わる</li>
+                  <li>マクロセル : 大きなエリアをカバーする</li>
+                  <li>ラジオなどのブロードキャストなど向き</li>
+              </ul>
+              <li>高周波数</li>
+
+              <ul>
+                  <li>多くのデータを転送できる</li>
+                  <li>遠くにはつたわらない</li>
+                  <li>マイクロセル : カバレッジ小、多数設備必要</li>
+                  <li>双方向通信</li>
+              </ul>
+          </ul>
+      </div>
+
+      <div class='slide'>
+          <h2>信号強度について</h2>
+          <ul>
+              <li>送信側、受信側間の信号強度</li>
+              <li>信号対雑音比、S/N比、SNRともいう</li>
+              <li><strong>信号レベルとノイズや干渉の比の値</strong>である</li>
+
+              <ul>
+                  <li>バッググラウンドノイズが大きいほど、情報伝達信号が強くなければならない</li>
+                  <li>バッググラウンドノイズとは他のデバイスによる干渉をいう</li>
+              </ul>
+          </ul>
+      </div>
+
+      <div class='slide'>
+          <h2>パフォーマンスの現状</h2>
+          <p>理想の環境
+          <ul>
+              <li>バッググラウンドノイズなし</li>
+              <li>特定の周波数帯域を独占使用</li>
+          </ul>
+
+          <p>現状ほとんどありえない
+          <ul>
+              <li>帯域幅の不足</li>
+              <li>ワイヤレスデバイス多すぎ</li>
+          </ul>
+      </div>
+
+      <div class='slide'>
+          <h2>その他の要因 → 変調</h2>
+          <p>帯域幅、SN比といった物理的要素に続き、<br>
+          信号の符号化アルゴリズムも重大な影響をもっている</p>
+          <p>
+          アナログからデジタルへの変換のことである。
+          </p>
+          <p>
+          この変換のことを、変調と呼ぶ。
+          <br>
+          変調は、変調アルファベットによって変換効率が変わる。
+          <br>
+          変調アルファベットとシンボルレートの組み合わせで
+          <br>
+          チャネルのスループットが決まる。
+          </p>
+      </div>
+
+      <div class='slide'>
+          <h2>パフォーマンスを下げる原因</h2>
+          <p>パフォーマンスに影響を与える要素として、</p>
+          <ul>
+              <li>
+              送受信の距離
+              </li>
+              <li>
+              バックグラウンドの大きさ
+              </li>
+              <li>
+              同じネットワーク内でのユーザによる干渉
+              </li>
+              <li>
+              近くの異なるネットワークのユーザによる干渉
+              </li>
+              <li>
+              送受信者の利用可能な出力
+              </li>
+              <li>
+              計算能力と変調アルゴリズム
+              </li>
+          </ul>
+      </div>
+
+      <div class='slide'>
+          <h2>理想のパフォーマンス達成のためには</h2>
+          <p>現状、望み通りのデータ転送速度の達成には・・・
+          <br>
+          <ul>
+              <li>
+              ノイズや干渉を取り除く
+              </li>
+              <li>
+              送受信の距離を縮める
+              </li>
+              <li>
+              出力高め、信号強度を上げる
+              </li>
+              <li>
+              最高の変調アルゴリズムを選択する
+              </li>
+              <li>
+              有線ネットワークを利用する
+              </li>
+          </ul>
+      </div>
+
+
+      <div class='slide'>
+        <h2>6章</h2>
+        <p>
+        </p>
+        <p>
+        この章では、
+        </p>
+        <p>
+        <b>
+            <ul>
+                <li>
+                </li>
+            </ul>
+        </b>
+        </p>
+        <p>
+        説明されている。
+        </p>
+      </div>
+
+    </div> <!-- presentation -->
+  </body>
+</html>
